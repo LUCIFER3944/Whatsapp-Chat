@@ -19,15 +19,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-       
-       
-        
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
     </div>
   </div>
 </nav>
@@ -48,10 +40,11 @@
             <!-- Search Chat -->
             <div class="search_chat">
                 <div>
-                    <input type="text" placeholder="Search or start new chat">
+                    <input type="text" id="searchInput" onkeyup="searchChats()" placeholder="Search or start new chat">
                     <ion-icon name="search-outline"></ion-icon> 
                 </div>                
             </div>
+            
             <!-- CHAT LIST -->
             <div class="chatlist">
                 <div class="block active">
@@ -217,7 +210,7 @@
             </div>
 
             <!-- CHAT-BOX -->
-            <div class="chatbox">
+            <div class="chatbox" id="chatbox">
                 <div class="message my_msg">
                     <p>Hi <br><span>12:18</span></p>
                 </div>
