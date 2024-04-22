@@ -1,6 +1,4 @@
 
-
- */
  * {
     margin: 0;
     padding: 0;
@@ -13,12 +11,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(
-      #009688 0%,
-      #009688 130px,
-      #d9dbd5 130px,
-      #d9dbd5 100%
-    );
+    
   }
   
   .container {
