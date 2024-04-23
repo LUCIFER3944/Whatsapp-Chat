@@ -1,63 +1,62 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const inputField = document.querySelector(".chat_input input");
-    const chatbox = document.querySelector(".chatbox");
+// start: Sidebar
+document.querySelector('.chat-sidebar-profile-toggle').addEventListener('click', function(e) {
+    e.preventDefault()
+    this.parentElement.classList.toggle('active')
+})
 
-    inputField.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            const message = inputField.value.trim();
-            if (message !== "") {
-                appendMessage(message, "my_msg");
-                inputField.value = ""; // Clear the input field
-            }
-        }
-    });
-
-    function appendMessage(message, className) {
-        const currentTime = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        const messageHTML = `
-            <div class="message ${className}">
-                <p>${message}<br><span>${currentTime}</span></p>
-            </div>`;
-        chatbox.insertAdjacentHTML("beforeend", messageHTML);
-        chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
+document.addEventListener('click', function(e) {
+    if(!e.target.matches('.chat-sidebar-profile, .chat-sidebar-profile *')) {
+        document.querySelector('.chat-sidebar-profile').classList.remove('active')
     }
-});
+})
+// end: Sidebar
 
-function searchChats() {
-    // Get input value
-    var input = document.getElementById('searchInput');
-    var filter = input.value.toUpperCase();
 
-    // Get chat list
-    var chatList = document.getElementsByClassName('block');
 
-    // Loop through all list items, and hide those who don't match the search query
-    for (var i = 0; i < chatList.length; i++) {
-        var chatName = chatList[i].getElementsByClassName('listHead')[0].getElementsByTagName('h4')[0];
-        var txtValue = chatName.textContent || chatName.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            chatList[i].style.display = "";
+// start: Coversation
+document.querySelectorAll('.conversation-item-dropdown-toggle').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+        e.preventDefault()
+        if(this.parentElement.classList.contains('active')) {
+            this.parentElement.classList.remove('active')
         } else {
-            chatList[i].style.display = "none";
+            document.querySelectorAll('.conversation-item-dropdown').forEach(function(i) {
+                i.classList.remove('active')
+            })
+            this.parentElement.classList.add('active')
         }
-    }
-}
+    })
+})
 
-window.onload = function() {
-    var chatList = document.getElementsByClassName('block');
-    for (var i = 0; i < chatList.length; i++) {
-        chatList[i].addEventListener('click', function() {
-            var chatName = this.getElementsByClassName('listHead')[0].getElementsByTagName('h4')[0].innerText;
-            openChat(chatName);
-        });
+document.addEventListener('click', function(e) {
+    if(!e.target.matches('.conversation-item-dropdown, .conversation-item-dropdown *')) {
+        document.querySelectorAll('.conversation-item-dropdown').forEach(function(i) {
+            i.classList.remove('active')
+        })
     }
-}
+})
 
-// Function to open chat for a specific contact
-function openChat(contactName) {
-    // Here, you would implement the logic to load the chat messages for the selected contact
-    // For demonstration purposes, let's just display the contact name in the chatbox
-    let chatbox = document.getElementById('chatbox');
-    chatbox.innerHTML = '<div class="message friend_msg"><p>Chat with ' + contactName + '</p></div>';
-    chatbox.style.width = "940px";
-}
+document.querySelectorAll('.conversation-form-input').forEach(function(item) {
+    item.addEventListener('input', function() {
+        this.rows = this.value.split('\n').length
+    })
+})
+
+document.querySelectorAll('[data-conversation]').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+        e.preventDefault()
+        document.querySelectorAll('.conversation').forEach(function(i) {
+            i.classList.remove('active')
+        })
+        document.querySelector(this.dataset.conversation).classList.add('active')
+    })
+})
+
+document.querySelectorAll('.conversation-back').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+        e.preventDefault()
+        this.closest('.conversation').classList.remove('active')
+        document.querySelector('.conversation-default').classList.add('active')
+    })
+})
+// end: Coversation
