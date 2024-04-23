@@ -12,6 +12,7 @@
     align-items: center;
     min-height: 100vh;
     background-color: #212020d8 !important;
+    background-image: url();
     
   }
 
@@ -352,4 +353,7 @@
   #logo{
     width: 50px;
     border-radius: 50%;
+  }
+  .menu{
+    display: none;
   }
