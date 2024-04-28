@@ -127,6 +127,8 @@ body {
     border-radius: 50%;
 }
 .chat-sidebar-profile-dropdown {
+    height: 100vh;
+    width: 300px;
     position: absolute;
     bottom: 100%;
     left: 16px;
