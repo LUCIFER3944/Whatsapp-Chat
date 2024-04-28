@@ -61,7 +61,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 })
 // end: Coversation
 
-// <----------------------------------New js----------------------------->
+// <----------------------------------Conversation js----------------------------->
 let conversation2 = document.querySelector("#conversation-2");
 let conversation3 = document.querySelector("#conversation3");
 
