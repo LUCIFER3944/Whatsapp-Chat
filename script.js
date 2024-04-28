@@ -67,7 +67,7 @@ let conversation3 = document.querySelector("#conversation3");
 
 conversation3.addEventListener("click", () => {
 
-    document.body.innerHTML += conversation2.innerHTML;
+    document.conversation2.innerHTML += conversation2.innerHTML;
     
     let newPhotoUrl1 = "image/img (10).jpg";
     let conversation3Photo = document.querySelector("#conversation3img");
@@ -80,3 +80,19 @@ conversation3.addEventListener("click", () => {
 //Don't know it's does not work as it should be so we should just leave it like that lol 
 
 
+$(document).ready(function(){
+    $("#fetchData").click(function(){
+        $.ajax({
+            url: 'profile.html',
+            method: 'GET',
+            success: function(data) {
+                // Handle successful response
+                $('#dataContainer').html(data);
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error(status, error);
+            }
+        });
+    });
+});
