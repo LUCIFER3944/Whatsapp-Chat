@@ -96,7 +96,39 @@ $(document).ready(function(){
         });
     });
 });
+// Function to open file picker when attachment button is clicked
+function openFilePicker() {
+    // Trigger click event of the file input
+    document.getElementById("fileInput").click();
+}
+
+// Add change event listener to the file input
+document.getElementById("fileInput").addEventListener("change", function() {
+    // Handle selected files
+    handleFiles(this.files);
+});
+
+// Function to handle selected files
+function handleFiles(files) {
+    // Loop through each selected file
+    for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+        
+        // Display the image in the chat
+        displayImageInChat(file);
+    }
+}
+
+// Function to display the image in the chat
+function displayImageInChat(file) {
+    // Create a new image element
+    let imgElement = document.createElement("img");
+    imgElement.src = URL.createObjectURL(file);
+    
+    // Append the image to the chat messages div
+    document.getElementById("chatMessages").appendChild(imgElement);
+}
 
 
 
-               let  attachment=document.querySelector(".conversation-form-button")  ;                                      
+            //    let  attachment=document.querySelector(".conversation-form-button")  ;                                      

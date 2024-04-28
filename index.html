@@ -388,8 +388,14 @@
                     <!-- input -->
                     <div class="conversation-form">
                         <button type="button" class="conversation-form-button"><i class="ri-emotion-line"></i></button>
-                        <button  type="button" class="conversation-form-button"> <i class="ri-attachment-2"></i></button>
-                        <button type="button" class="conversation-form-button"> <i class="ri-camera-line"></i></button>
+                        <div id="chatMessages"></div>
+                        <button type="button" class="conversation-form-button" onclick="openFilePicker()">
+                            <i class="ri-attachment-2"></i>
+                        </button>
+                        <input type="file" id="fileInput" style="display: none;" accept="image/*" multiple>
+                        
+                        <button type="button" class="conversation-form-button" onclick="openCamera()"> <i class="ri-camera-line"></i></button>
+                        <video id="videoElement" style="display:none;" autoplay></video>
 
                         <div class="conversation-form-group">
                             <textarea class="conversation-form-input" rows="1" placeholder="Type here..."></textarea>
