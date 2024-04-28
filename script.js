@@ -65,19 +65,18 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 let conversation2 = document.querySelector("#conversation-2");
 let conversation3 = document.querySelector("#conversation3");
 
-
-let newPhotoUrl1 = "image/img (10).jpg";
-
 conversation3.addEventListener("click", () => {
 
     document.body.innerHTML += conversation2.innerHTML;
     
-   
+    let newPhotoUrl1 = "image/img (10).jpg";
     let conversation3Photo = document.querySelector("#conversation3img");
     let conversation4Photo = document.querySelector("#conversation4img");
-
+    
     conversation3Photo.src = newPhotoUrl1;
     conversation4Photo.src = newPhotoUrl1;
+  
 });
+//Don't know it's does not work as it should be so we should just leave it like that lol 
 
 
