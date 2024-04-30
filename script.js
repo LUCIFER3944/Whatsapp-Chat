@@ -102,6 +102,10 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
       if (message !== '') {
         // Show the chat container
         chatMessagesContainer.style.display = 'block';
+        chatMessagesContainer.style.color = 'white';
+        chatMessagesContainer.style.backgroundColor = '#10B981';
+        chatMessagesContainer.style.width = '50vw';
+
         
         // Show the message paragraph
         const messageParagraph = document.createElement('p');
