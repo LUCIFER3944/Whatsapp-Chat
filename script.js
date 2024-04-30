@@ -212,3 +212,6 @@ function takePhoto() {
 
 // Event listener for starting the camera
 startCameraButton.addEventListener('click', startCamera);
+
+
+// --------------------------------------------------------------attachment-----------------------------------------------------------------------------
