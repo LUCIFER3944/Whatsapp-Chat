@@ -777,3 +777,19 @@ body {
     }
 }
 /* end: Breakpoints */
+.emoticon-picker {
+    position: absolute;
+    top: 88%; /* Position below the emoticon button */
+    left: 50;
+    background-color: white;
+    border: 1px solid #ccc;
+  }
+  
+  .emoticon-option {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+  }
+  

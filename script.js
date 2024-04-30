@@ -83,7 +83,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 
     // ----------------------------------Function to handle sending a message---------------------------------------------------
    
-    const messageInput = document.querySelector('.conversation-form-input');
+  var messageInput = document.querySelector('.conversation-form-input');
     const submitButton = document.querySelector('.conversation-form-submit');
     const chatMessagesContainer = document.querySelector('#me');
     
@@ -104,18 +104,50 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
         chatMessagesContainer.style.display = 'block';
         chatMessagesContainer.style.color = 'white';
         chatMessagesContainer.style.backgroundColor = '#10B981';
-        chatMessagesContainer.style.width = '50vw';
+        chatMessagesContainer.style.width = '40vw';
 
         
         // Show the message paragraph
         const messageParagraph = document.createElement('p');
         messageParagraph.textContent = message;
         messageParagraph.style.display = 'block';
+        chatMessagesContainer.style.borderRadius = '3%';
+
         
         chatMessagesContainer.appendChild(messageParagraph); // Append message paragraph to chatMessagesContainer
         
         messageInput.value = '';
       }
     }
-    
-    
+    // ---------------------------------------Emotes-------------------------------------------------------------------------------
+    const emoticonButton = document.getElementById('emoticon-button');
+const emoticonPicker = document.querySelector('.emoticon-picker');
+var  messageInput = document.querySelector('.conversation-form-input');
+
+// Toggle emoticon picker visibility when the emoticon button is clicked
+emoticonButton.addEventListener('click', function() {
+    emoticonPicker.style.display = emoticonPicker.style.display === 'block' ? 'none' : 'block';
+});
+
+// Add event listener to each emoticon option
+const emoticonOptions = document.querySelectorAll('.emoticon-option');
+emoticonOptions.forEach(option => {
+    option.addEventListener('click', function() {
+        const selectedEmoticon = option.textContent;
+        // Insert the selected emoticon into the textarea
+        insertEmoticon(selectedEmoticon);
+        // Hide the emoticon picker
+        emoticonPicker.style.display = 'none';
+    });
+});
+
+function insertEmoticon(emoticon) {
+    // Insert the emoticon at the cursor position or at the end of the textarea
+    const cursorPosition = messageInput.selectionStart;
+    const currentValue = messageInput.value;
+    const newValue =
+        currentValue.substring(0, cursorPosition) +
+        emoticon +
+        currentValue.substring(cursorPosition);
+    messageInput.value = newValue;
+}
