@@ -80,34 +80,27 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 //Don't know it's does not work as it should be so we should just leave it like that lol 
 
 // <----------------------------------Conversation js----------------------------->
-document.addEventListener('DOMContentLoaded', function () {
-    const messageInput = document.querySelector('.conversation-form-input');
-    const submitButton = document.querySelector('.conversation-form-submit');
-    const chatMessages = document.querySelector('#conversation-1');
+const messageInput = document.querySelector('.conversation-form-input');
+const submitButton = document.querySelector('.conversation-form-submit');
+const chatMessages = document.querySelector('#conversation-1');
+
+submitButton.addEventListener('click', sendMessage);
+
+function sendMessage(event) {
+  event.preventDefault();
+  
+  const message = messageInput.value.trim();
+  
+  if (message !== '') {
+    const newMessage = document.createElement('div');
+    newMessage.textContent = message;
+    
+    chatMessages.appendChild(newMessage);
+    
+    messageInput.value = '';
+  }
+}
+
 
     // Function to handle sending a message
-    function sendMessage() {
-        const messageText = messageInput.value.trim();
-        if (messageText !== '') {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', 'outgoing');
-            messageElement.textContent = messageText;
-            chatMessages.insertBefore(messageElement, messageInput.parentElement); // Insert before the input's parent element
-            messageInput.value = ''; // Clear input field
-            // Scroll to the bottom to show the latest message
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-    }
-
-    // Event listener for clicking the submit button
-    submitButton.addEventListener('click', function () {
-        sendMessage();
-    });
-
-    // Event listener for pressing Enter key
-    messageInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-});
+   
