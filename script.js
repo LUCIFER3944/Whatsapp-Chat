@@ -80,27 +80,35 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 //Don't know it's does not work as it should be so we should just leave it like that lol 
 
 // <----------------------------------Conversation js----------------------------->
-const messageInput = document.querySelector('.conversation-form-input');
-const submitButton = document.querySelector('.conversation-form-submit');
-const chatMessages1 = document.querySelector('#me');
-
-submitButton.addEventListener('click', sendMessage);
-
-function sendMessage(event) {
-  event.preventDefault();
-  
-  const message = messageInput.value.trim();
-  
-  if (message !== '') {
-    const newMessage = document.createElement('div');
-    newMessage.textContent = message;
-    
-    chatMessages1.appendChild(newMessage); // Append to chatMessages1
-    
-    messageInput.value = '';
-  }
-}
-
 
     // Function to handle sending a message
    
+    const messageInput = document.querySelector('.conversation-form-input');
+    const submitButton = document.querySelector('.conversation-form-submit');
+    const chatMessagesContainer = document.querySelector('#me');
+    
+    submitButton.addEventListener('click', sendMessage);
+    
+    function sendMessage(event) {
+      event.preventDefault();
+      
+      const message = messageInput.value.trim();
+      
+      if (message !== '') {
+        // Show the chat container
+        chatMessagesContainer.style.display = 'block';
+        
+        const newMessage = document.createElement('div');
+        newMessage.textContent = message;
+        
+        // Show the message paragraph
+        const messageParagraph = document.getElementById('me2');
+        messageParagraph.textContent = message;
+        messageParagraph.style.display = 'block';
+        
+        chatMessagesContainer.appendChild(newMessage); // Append to chatMessagesContainer
+        
+        messageInput.value = '';
+      }
+    }
+    
