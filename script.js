@@ -81,7 +81,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 
 // <----------------------------------Conversation js----------------------------->
 
-    // Function to handle sending a message
+    // ----------------------------------Function to handle sending a message---------------------------------------------------
    
     const messageInput = document.querySelector('.conversation-form-input');
     const submitButton = document.querySelector('.conversation-form-submit');
@@ -99,7 +99,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
       
       const message = messageInput.value.trim();
       
-      if (message !== '') {
+      if (message !== '') {// It's NOT
         // Show the chat container
         chatMessagesContainer.style.display = 'block';
         chatMessagesContainer.style.color = 'white';
