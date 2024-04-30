@@ -175,3 +175,40 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 // e.key=="enter"
 // console.log(e)
 // })
+// ----------------------------------------------------------camera---------------------------------------------------------------
+const startCameraButton = document.getElementById('startCamera');
+const videoElement = document.getElementById('video');
+const downloadLink = document.getElementById('downloadLink');
+
+let stream;
+
+// Function to start the camera
+async function startCamera() {
+    try {
+        if (!stream) {
+            stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            videoElement.srcObject = stream;
+            videoElement.play();
+            videoElement.style.display = 'block';
+            downloadLink.style.display = 'none';
+        } else {
+            takePhoto();
+        }
+    } catch (err) {
+        console.error('Error accessing camera:', err);
+    }
+}
+
+// Function to take a photo
+function takePhoto() {
+    const canvas = document.createElement('canvas');
+    canvas.width = videoElement.videoWidth;
+    canvas.height = videoElement.videoHeight;
+    canvas.getContext('2d').drawImage(videoElement, 0, 0);
+    const photoData = canvas.toDataURL('image/jpeg');
+    downloadLink.href = photoData;
+    downloadLink.style.display = 'inline-block';
+}
+
+// Event listener for starting the camera
+startCameraButton.addEventListener('click', startCamera);

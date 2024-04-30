@@ -792,4 +792,11 @@ body {
     background-color: transparent;
     font-size: 18px;
   }
-  
+  #video {
+    position: absolute;
+    left: 50%;
+    width: 100%;
+
+    max-width: 640px;
+    display: none;
+}
