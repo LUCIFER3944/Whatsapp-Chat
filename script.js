@@ -88,6 +88,11 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
     const chatMessagesContainer = document.querySelector('#me');
     
     submitButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keydown', (event)=> {
+        if (event.key === 'Enter') {
+          sendMessage(event);
+        }
+      });
     
     function sendMessage(event) {
       event.preventDefault();
