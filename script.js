@@ -82,76 +82,88 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 // <----------------------------------Conversation js----------------------------->
 
     // ----------------------------------Function to handle sending a message---------------------------------------------------
-   
-  var messageInput = document.querySelector('.conversation-form-input');
-    const submitButton = document.querySelector('.conversation-form-submit');
-    const chatMessagesContainer = document.querySelector('#me');
-    const conversationmain = document.querySelector('.conversation-main');
-    
-    submitButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        sendMessage(event);
-      }
-    });
-    
-    function sendMessage(event) {
-      event.preventDefault();
+  function conversation() {
+    console.time("test")
+    var messageInput = document.querySelector('.conversation-form-input');
+      const submitButton = document.querySelector('.conversation-form-submit');
+      const chatMessagesContainer = document.querySelector('#me');
+      const conversationmain = document.querySelector('.conversation-main');
       
-      const message = messageInput.value.trim();
+      submitButton.addEventListener('click', sendMessage);
+      messageInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          sendMessage(event);
+        }
+      });
       
-      if (message !== '') {// It's NOT
-        // Show the chat container
-        chatMessagesContainer.style.display = 'block';
-        chatMessagesContainer.style.color = 'white';
-        chatMessagesContainer.style.backgroundColor = '#10B981';
-        chatMessagesContainer.style.width = '40vw';
-
+      function sendMessage(event) {
+        event.preventDefault();
         
-        // Show the message paragraph
-        const messageParagraph = document.createElement('p');
-        messageParagraph.textContent = message;
-        messageParagraph.style.display = 'block';
-        chatMessagesContainer.style.borderRadius = '3%';
-
+        const message = messageInput.value.trim();
         
-        chatMessagesContainer.appendChild(messageParagraph); // Append message paragraph to chatMessagesContainer
-        
-        messageInput.value = '';
-      }
-    }
+        if (message !== '') {// It's NOT
+          // Show the chat container
+          chatMessagesContainer.style.display = 'block';
+          chatMessagesContainer.style.color = 'white';
+          chatMessagesContainer.style.backgroundColor = '#10B981';
+          chatMessagesContainer.style.width = '40vw';
+  
+          
+          // Show the message paragraph
+          const messageParagraph = document.createElement('p');
+          messageParagraph.textContent = message;
+          messageParagraph.style.display = 'block';
+          chatMessagesContainer.style.borderRadius = '3%';
+  
+          
+          chatMessagesContainer.appendChild(messageParagraph); // Append message paragraph to chatMessagesContainer
+          
+          messageInput.value = '';
+        }
+      } console.timeEnd("test")
+  }
     // ---------------------------------------Emotes-------------------------------------------------------------------------------
+   function emotepicker() {
+
     const emoticonButton = document.getElementById('emoticon-button');
-const emoticonPicker = document.querySelector('.emoticon-picker');
-var  messageInput = document.querySelector('.conversation-form-input');
-
-// Toggle emoticon picker visibility when the emoticon button is clicked
-emoticonButton.addEventListener('click', function() {
-    emoticonPicker.style.display = emoticonPicker.style.display === 'block' ? 'none' : 'block';
-});
-
-// Add event listener to each emoticon option
-const emoticonOptions = document.querySelectorAll('.emoticon-option');
-emoticonOptions.forEach(option => {
-    option.addEventListener('click', function() {
-        const selectedEmoticon = option.textContent;
-        // Insert the selected emoticon into the textarea
-        insertEmoticon(selectedEmoticon);
-        // Hide the emoticon picker
-        emoticonPicker.style.display = 'none';
+    const emoticonPicker = document.querySelector('.emoticon-picker');
+    var  messageInput = document.querySelector('.conversation-form-input');
+    
+    // Toggle emoticon picker visibility when the emoticon button is clicked
+    emoticonButton.addEventListener('click', function() {
+        emoticonPicker.style.display = emoticonPicker.style.display === 'block' ? 'none' : 'block';
     });
-});
+    
+    // Add event listener to each emoticon option
+    const emoticonOptions = document.querySelectorAll('.emoticon-option');
+    emoticonOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const selectedEmoticon = option.textContent;
+            // Insert the selected emoticon into the textarea
+            insertEmoticon(selectedEmoticon);
+            // Hide the emoticon picker
+            emoticonPicker.style.display = 'none';
+        });
+    });
+    
+    function insertEmoticon(emoticon) {
+        // Insert the emoticon at the cursor position or at the end of the textarea
+        const cursorPosition = messageInput.selectionStart;
+        const currentValue = messageInput.value;
+        const newValue =
+            currentValue.substring(0, cursorPosition) +
+            emoticon +
+            currentValue.substring(cursorPosition);
+        messageInput.value = newValue;
+    }
 
-function insertEmoticon(emoticon) {
-    // Insert the emoticon at the cursor position or at the end of the textarea
-    const cursorPosition = messageInput.selectionStart;
-    const currentValue = messageInput.value;
-    const newValue =
-        currentValue.substring(0, cursorPosition) +
-        emoticon +
-        currentValue.substring(cursorPosition);
-    messageInput.value = newValue;
-}
+
+   }
+   document.addEventListener('DOMContentLoaded', function() {
+    conversation();
+    emotepicker();
+});
+   
 //example
 // let you=document.createElement("div");
 // let me =document.createTextNode("hello")
