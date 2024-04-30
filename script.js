@@ -88,11 +88,11 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
     const chatMessagesContainer = document.querySelector('#me');
     
     submitButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keydown', (event)=> {
-        if (event.key === 'Enter') {
-          sendMessage(event);
-        }
-      });
+    messageInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        sendMessage(event);
+      }
+    });
     
     function sendMessage(event) {
       event.preventDefault();
@@ -103,17 +103,15 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
         // Show the chat container
         chatMessagesContainer.style.display = 'block';
         
-        const newMessage = document.createElement('div');
-        newMessage.textContent = message;
-        
         // Show the message paragraph
-        const messageParagraph = document.getElementById('me2');
+        const messageParagraph = document.createElement('p');
         messageParagraph.textContent = message;
         messageParagraph.style.display = 'block';
         
-        chatMessagesContainer.appendChild(newMessage); // Append to chatMessagesContainer
+        chatMessagesContainer.appendChild(messageParagraph); // Append message paragraph to chatMessagesContainer
         
         messageInput.value = '';
       }
     }
+    
     
