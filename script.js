@@ -86,6 +86,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
   var messageInput = document.querySelector('.conversation-form-input');
     const submitButton = document.querySelector('.conversation-form-submit');
     const chatMessagesContainer = document.querySelector('#me');
+    const conversationmain = document.querySelector('.conversation-main');
     
     submitButton.addEventListener('click', sendMessage);
     messageInput.addEventListener('keydown', function(event) {
@@ -151,3 +152,9 @@ function insertEmoticon(emoticon) {
         currentValue.substring(cursorPosition);
     messageInput.value = newValue;
 }
+//example
+// let you=document.createElement("div");
+// let me =document.createTextNode("hello")
+
+// let example=you.appendChild(me);
+// console.log(example);
