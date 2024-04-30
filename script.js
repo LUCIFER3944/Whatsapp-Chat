@@ -215,3 +215,43 @@ startCameraButton.addEventListener('click', startCamera);
 
 
 // --------------------------------------------------------------attachment-----------------------------------------------------------------------------
+var messageInput = document.querySelector('.conversation-form-input');
+const submitButton = document.querySelector('.conversation-form-submit');
+const chatMessagesContainer = document.querySelector('#me');
+const conversationmain = document.querySelector('.conversation-main');
+
+document.getElementById('attachment').addEventListener('click', function() {
+    // Triggering click event on the hidden file input
+    document.getElementById('file-input').click();
+});
+
+// Handling file selection
+document.getElementById('file-input').addEventListener('change', function(event) {
+    var file = event.target.files[0]; // Get the selected file
+    if (file) {
+        // Display image preview in message input field
+        displayImagePreviewAndSendMessage(file);
+    }
+});
+
+// Function to display image preview and send it to the message box
+function displayImagePreviewAndSendMessage(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(event) {
+        // Create an img element
+        var img = document.createElement('img');
+        img.src = event.target.result;
+        img.style.maxWidth = '100px'; // Adjust the image size as needed
+        img.style.maxHeight = '100px'; // Adjust the image size as needed
+        
+        // Append the img element to the message input field
+        messageInput.appendChild(img);
+
+        // Append the file name to the message input field
+        messageInput.value += ' ' + file.name;
+    };
+    reader.onerror = function(error) {
+        console.error('Error reading file:', error);
+    };
+}
