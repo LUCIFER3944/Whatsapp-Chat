@@ -82,7 +82,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 // <----------------------------------Conversation js----------------------------->
 const messageInput = document.querySelector('.conversation-form-input');
 const submitButton = document.querySelector('.conversation-form-submit');
-const chatMessages = document.querySelector('#conversation-1');
+const chatMessages1 = document.querySelector('#me');
 
 submitButton.addEventListener('click', sendMessage);
 
@@ -95,7 +95,7 @@ function sendMessage(event) {
     const newMessage = document.createElement('div');
     newMessage.textContent = message;
     
-    chatMessages.appendChild(newMessage);
+    chatMessages1.appendChild(newMessage); // Append to chatMessages1
     
     messageInput.value = '';
   }
