@@ -775,11 +775,14 @@ body {
         display: none;
         padding: 16px;
     }
+   
 }
 /* end: Breakpoints */
 .emoticon-picker {
+    width: 150px;
+    height: 210px;
     position: absolute;
-    top: 88%; /* Position below the emoticon button */
+    top: 65%; /* Position below the emoticon button */
     left: 50;
     background-color: white;
     border: 1px solid #ccc;
@@ -793,10 +796,15 @@ body {
     font-size: 18px;
   }
   #video {
-    position: absolute;
-    left: 50%;
-    width: 100%;
-
+  position: absolute;
+    top: 40%;
+    left: 40%;
+    height: 400px;
+   
+  /* 
     max-width: 640px;
-    display: none;
+    display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
