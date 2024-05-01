@@ -121,6 +121,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
           
           chatMessagesContainer.appendChild(messageParagraph); // Append message paragraph to chatMessagesContainer
           
+          
           messageInput.value = '';
         }
       } console.timeEnd("test")
