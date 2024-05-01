@@ -82,50 +82,60 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 // <----------------------------------Conversation js----------------------------->
 
     // ----------------------------------Function to handle sending a message---------------------------------------------------
-  function conversation() {
+
+
+
+function conversation() {
     console.time("test")
     var messageInput = document.querySelector('.conversation-form-input');
-      const submitButton = document.querySelector('.conversation-form-submit');
-      const chatMessagesContainer = document.querySelector('#me');
-      const conversationmain = document.querySelector('.conversation-main');
-      
-      submitButton.addEventListener('click', sendMessage);
-      messageInput.addEventListener('keydown', function(event) {
+    const submitButton = document.querySelector('.conversation-form-submit');
+    const conversationmain = document.querySelector('.conversation-main');
+
+    submitButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
-          sendMessage(event);
+            sendMessage(event);
         }
-      });
-      
-      function sendMessage(event) {
+    });
+
+    function sendMessage(event) {
         event.preventDefault();
-        
+
         const message = messageInput.value.trim();
-        
-        if (message !== '') {// It's NOT
-          // Show the chat container
-          chatMessagesContainer.style.display = 'block';
-          chatMessagesContainer.style.display = 'flex';
-        //   chatMessagesContainer.style. justifyContent='center' ;
+
+        if (message !== '') {
+            // Create a new chat container for the message
+            const chatMessagesContainer = document.createElement('div');
+            chatMessagesContainer.classList.add('conversation-item-wrapper');
+            chatMessagesContainer.classList.add('me');
+
+            // Create the message paragraph
+            const messageParagraph = document.createElement('p');
+            messageParagraph.textContent = message;
+            messageParagraph.style.display = 'block';
+            messageParagraph.style.backgroundColor = '#10B981';
+            
+       chatMessagesContainer.style.display = 'flex';
+          chatMessagesContainer.style. justifyContent='center' ;
           chatMessagesContainer.style.alignItems='center' ;
           chatMessagesContainer.style.color = 'white';
           chatMessagesContainer.style.backgroundColor = '#10B981';
           chatMessagesContainer.style.width = '40vw';
-  
-          
-          // Show the message paragraph
-          const messageParagraph = document.createElement('p');
-          messageParagraph.textContent = message;
-          messageParagraph.style.display = 'block';
-          chatMessagesContainer.style.borderRadius = '3%';
-  
-          
-          chatMessagesContainer.appendChild(messageParagraph); // Append message paragraph to chatMessagesContainer
-          
-          
-          messageInput.value = '';
+
+            // Append message paragraph to chat container
+            chatMessagesContainer.appendChild(messageParagraph);
+
+            // Append chat container to conversation main
+            conversationmain.appendChild(chatMessagesContainer);
+
+            messageInput.value = '';
         }
-      } console.timeEnd("test")
-  }
+    }
+    console.timeEnd("test")
+}
+
+
+
     // ---------------------------------------Emotes-------------------------------------------------------------------------------
    function emotepicker() {
 

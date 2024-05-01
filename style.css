@@ -802,10 +802,6 @@ body {
     left: 40%;
     height: 400px;
     width: 40vw;
-   
-  /* 
-    max-width: 640px;
-    display: none; */
     display: flex;
     justify-content: center;
     align-items: center;
