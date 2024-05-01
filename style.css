@@ -809,3 +809,16 @@ body {
     justify-content: center;
     align-items: center;
 }
+.chat-sidebar-profile-dropdown img{
+    cursor: pointer;
+width: 200px;
+ height:200px;
+}
+.chat-sidebar-profile-dropdown {
+    
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
