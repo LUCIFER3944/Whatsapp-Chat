@@ -104,6 +104,9 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
         if (message !== '') {// It's NOT
           // Show the chat container
           chatMessagesContainer.style.display = 'block';
+          chatMessagesContainer.style.display = 'flex';
+        //   chatMessagesContainer.style. justifyContent='center' ;
+          chatMessagesContainer.style.alignItems='center' ;
           chatMessagesContainer.style.color = 'white';
           chatMessagesContainer.style.backgroundColor = '#10B981';
           chatMessagesContainer.style.width = '40vw';
