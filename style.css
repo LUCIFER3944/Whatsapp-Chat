@@ -826,4 +826,45 @@ width: 200px;
   .dropdown.show {
     display: block; /* Show the dropdown menu */
   }
+  .contact {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.contact-details {
+    display: flex;
   
+    align-items: center;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.contact-info {
+    flex-grow: 1;
+}
+
+.contact-name {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.contact-number {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.contact-status {
+    font-size: 14px;
+    color: #555;
+}
