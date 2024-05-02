@@ -64,7 +64,7 @@ body {
 .chat-sidebar-menu {
     list-style-type: none;
     display: flex;
-  
+  gap: 30px;
     flex-direction: column;
     height: 100%;
     padding: 16px 0;
@@ -819,3 +819,11 @@ width: 200px;
     justify-content: center;
     align-items: center;
 }
+.dropdown {
+    display: none; /* Initially hide the dropdown menu */
+  }
+  
+  .dropdown.show {
+    display: block; /* Show the dropdown menu */
+  }
+  

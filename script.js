@@ -269,3 +269,6 @@ function displayImagePreviewAndSendMessage(file) {
         console.error('Error reading file:', error);
     };
 }
+//---------------------------------------------------contacts----------------------------------------
+
+
