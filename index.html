@@ -116,23 +116,66 @@
   </div>
 </div>
 
-<button class="btn " id="folder" type="button" ><i class="ri-folder-line"></i></button>
-<div class="dropdown-content1">
-    <a href="#">me</a>
-    <a href="#">me</a>
-    
-  </div>
 
-    <button class="btn" id="setting" type="button"><i class="ri-settings-line"></i></button>
-    <div class="dropdown-content">
-      <a href="#"><i class="ri-customer-service-2-line"></i>support</a>
-      <a href="#"><i class="ri-questionnaire-line"></i>Help</a>
-      
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+    <div class="offcanvas-body">
+      <ul class="list-group">
+        <li class="list-group-item">Home</li>
+        <li class="list-group-item">About</li>
+        <li class="list-group-item">Services</li>
+        <li class="list-group-item">Contact</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main content -->
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                <i class="ri-folder-line"></i>
+              </button>
+              
+          
+          </div>
+      </div>
+  </div>
+  
+  
  
-
+    <div class="offcanvas second-offcanvas offcanvas-start" tabindex="-1" id="secondOffcanvas" aria-labelledby="secondOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="secondOffcanvasLabel">Menu 2</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-group">
+            <li class="list-group-item">Products</li>
+            <li class="list-group-item">Pricing</li>
+            <li class="list-group-item">FAQ</li>
+            <li class="list-group-item">Support</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Main content -->
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                  <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#secondOffcanvas" aria-controls="secondOffcanvas">
+                    <i class="ri-settings-line"></i>
+                  </button>
+            
+              </div>
+          </div>
+      </div>
+      
 <!--------------------------------------------------------------- Chat side bar ------------------------------------------------------------------------>
-
+              
                     <li class="chat-sidebar-profile">
                         <button type="button" class="chat-sidebar-profile-toggle">
                             <img src="image/img (1).jpg" alt="">
