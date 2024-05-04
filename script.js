@@ -143,6 +143,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
     
                 // Append chat container to conversation main
                 conversationMain.appendChild(chatContainer);
+           
     
                 // Reset input value
                 messageInput.value = '';
