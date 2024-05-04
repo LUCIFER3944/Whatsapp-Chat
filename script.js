@@ -283,4 +283,16 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  //---------------------------------------------------Folder----------------------------------------
+  document.addEventListener('DOMContentLoaded', function() {
+    var dropdownBtn = document.getElementById('folder');
+    var dropdownContent = document.querySelector('.dropdown-content1');
   
+    dropdownBtn.addEventListener('click', function() {
+      if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+      } else {
+        dropdownContent.style.display = 'block';
+      }
+    });
+  });
