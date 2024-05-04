@@ -114,6 +114,7 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
                 image.style.borderRadius = "50%";
                 image.style.width = '20px';
                 image.style.height = '20x';
+                image.style.objectFit = 'cover';
                 image.style.marginRight = '10px'; // Add some margin between image and message
     
                 // Append image to conversation main
@@ -129,7 +130,8 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
                 messageParagraph.textContent = message;
                 messageParagraph.style.display = 'block';
                 messageParagraph.style.backgroundColor = '#10B981';
-                messageParagraph.style.borderRadius = '10%';
+               
+                messageParagraph.style.borderRadius = '5%';
     
                 // Append message paragraph to chat container
                 chatContainer.appendChild(messageParagraph);
