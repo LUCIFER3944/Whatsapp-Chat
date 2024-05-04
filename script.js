@@ -255,9 +255,8 @@ startCameraButton.addEventListener('click', startCamera);
 
 // --------------------------------------------------------------attachment-----------------------------------------------------------------------------
 var messageInput = document.querySelector('.conversation-form-input');
-const submitButton = document.querySelector('.conversation-form-submit');
-const chatMessagesContainer = document.querySelector('#me');
-const conversationmain = document.querySelector('.conversation-main');
+var submitButton = document.querySelector('.conversation-form-submit');
+var conversationMain = document.querySelector('.conversation-main');
 
 document.getElementById('attachment').addEventListener('click', function() {
     // Triggering click event on the hidden file input
@@ -268,32 +267,47 @@ document.getElementById('attachment').addEventListener('click', function() {
 document.getElementById('file-input').addEventListener('change', function(event) {
     var file = event.target.files[0]; // Get the selected file
     if (file) {
-        // Display image preview in message input field
-        displayImagePreviewAndSendMessage(file);
+        // Display image in chat
+        displayImageInChat(file);
     }
 });
 
-// Function to display image preview and send it to the message box
-function displayImagePreviewAndSendMessage(file) {
+// Function to display image in chat
+function displayImageInChat(file) {
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function(event) {
-        // Create an img element
-        var img = document.createElement('img');
-        img.src = event.target.result;
-        img.style.maxWidth = '100px'; // Adjust the image size as needed
-        img.style.maxHeight = '100px'; // Adjust the image size as needed
-        
-        // Append the img element to the message input field
-        messageInput.appendChild(img);
+        // Create a new chat container for the image
+        var chatContainer = document.createElement('div');
+        chatContainer.classList.add('conversation-item-wrapper');
+        chatContainer.classList.add('me');
 
-        // Append the file name to the message input field
-        messageInput.value += ' ' + file.name;
+        // Create the image element
+        var image = document.createElement('img');
+        image.src = event.target.result;
+        image.alt = 'Image'; // Provide appropriate alt text
+        image.style.maxWidth = '300px'; // Adjust image size as needed
+
+        // Append image to chat container
+        chatContainer.appendChild(image);
+
+        // Apply styling to the chat container
+        chatContainer.style.display = 'flex';
+        chatContainer.style.justifyContent = 'flex-start'; // Align items to the left
+        chatContainer.style.alignItems = 'center';
+        chatContainer.style.color = 'white';
+        chatContainer.style.backgroundColor = '#10B981';
+        chatContainer.style.width = 'fit-content'; // Adjust container width based on content
+        chatContainer.style.marginBottom = '10px'; // Add some margin between chat items
+
+        // Append chat container to conversation main
+        conversationMain.appendChild(chatContainer);
     };
     reader.onerror = function(error) {
         console.error('Error reading file:', error);
     };
 }
+
 // //---------------------------------------------------Setting----------------------------------------
 
 // document.addEventListener('DOMContentLoaded', function() {
