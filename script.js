@@ -85,54 +85,76 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 
 
 
-function conversation() {
-    console.time("test")
-    var messageInput = document.querySelector('.conversation-form-input');
-    const submitButton = document.querySelector('.conversation-form-submit');
-    const conversationmain = document.querySelector('.conversation-main');
-
-    submitButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            sendMessage(event);
+    function conversation() {
+        console.time("conversation");
+    
+        // Get DOM elements
+        const messageInput = document.querySelector('.conversation-form-input');
+        const submitButton = document.querySelector('.conversation-form-submit');
+        const conversationMain = document.querySelector('.conversation-main');
+    
+        // Add event listeners
+        submitButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage(event);
+            }
+        });
+    
+        function sendMessage(event) {
+            event.preventDefault();
+    
+            const message = messageInput.value.trim();
+    
+            if (message !== '') {
+                // Create the image element
+                const image = document.createElement('img');
+                image.src = 'image/img (1).jpg'; // Replace with the actual path to your image
+                image.alt = 'Profile Picture';
+                image.style.borderRadius = "50%";
+                image.style.width = '20px';
+                image.style.height = '20x';
+                image.style.marginRight = '10px'; // Add some margin between image and message
+    
+                // Append image to conversation main
+                conversationMain.appendChild(image);
+    
+                // Create a new chat container for the message
+                const chatContainer = document.createElement('div');
+                chatContainer.classList.add('conversation-item-wrapper');
+                chatContainer.classList.add('me');
+    
+                // Create the message paragraph
+                const messageParagraph = document.createElement('p');
+                messageParagraph.textContent = message;
+                messageParagraph.style.display = 'block';
+                messageParagraph.style.backgroundColor = '#10B981';
+                messageParagraph.style.borderRadius = '10%';
+    
+                // Append message paragraph to chat container
+                chatContainer.appendChild(messageParagraph);
+    
+                // Apply styling to the chat container
+                chatContainer.style.color = 'white';
+                chatContainer.style.backgroundColor = '#10B981';
+                chatContainer.style.width = 'fit-content'; // Adjust container width based on content
+                chatContainer.style.marginBottom = '10px'; // Add some margin between chat items
+                chatContainer.style.borderRadius = '10%';
+    
+                // Append chat container to conversation main
+                conversationMain.appendChild(chatContainer);
+    
+                // Reset input value
+                messageInput.value = '';
+            }
         }
-    });
-
-    function sendMessage(event) {
-        event.preventDefault();
-
-        const message = messageInput.value.trim();
-
-        if (message !== '') {
-            // Create a new chat container for the message
-            const chatMessagesContainer = document.createElement('div');
-            chatMessagesContainer.classList.add('conversation-item-wrapper');
-            chatMessagesContainer.classList.add('me');
-
-            // Create the message paragraph
-            const messageParagraph = document.createElement('p');
-            messageParagraph.textContent = message;
-            messageParagraph.style.display = 'block';
-            messageParagraph.style.backgroundColor = '#10B981';
-            
-       chatMessagesContainer.style.display = 'flex';
-          chatMessagesContainer.style. justifyContent='center' ;
-          chatMessagesContainer.style.alignItems='center' ;
-          chatMessagesContainer.style.color = 'white';
-          chatMessagesContainer.style.backgroundColor = '#10B981';
-          chatMessagesContainer.style.width = '40vw';
-
-            // Append message paragraph to chat container
-            chatMessagesContainer.appendChild(messageParagraph);
-
-            // Append chat container to conversation main
-            conversationmain.appendChild(chatMessagesContainer);
-
-            messageInput.value = '';
-        }
+    
+        console.timeEnd("conversation");
     }
-    console.timeEnd("test")
-}
+    
+    // Call the conversation function
+    conversation();
+    
 
 
 
@@ -269,30 +291,30 @@ function displayImagePreviewAndSendMessage(file) {
         console.error('Error reading file:', error);
     };
 }
-//---------------------------------------------------Setting----------------------------------------
+// //---------------------------------------------------Setting----------------------------------------
 
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdownBtn = document.getElementById('setting');
-    var dropdownContent = document.querySelector('.dropdown-content');
+// document.addEventListener('DOMContentLoaded', function() {
+//     var dropdownBtn = document.getElementById('setting');
+//     var dropdownContent = document.querySelector('.dropdown-content');
   
-    dropdownBtn.addEventListener('click', function() {
-      if (dropdownContent.style.display === 'block') {
-        dropdownContent.style.display = 'none';
-      } else {
-        dropdownContent.style.display = 'block';
-      }
-    });
-  });
-  //---------------------------------------------------Folder----------------------------------------
-  document.addEventListener('DOMContentLoaded', function() {
-    var dropdownBtn = document.getElementById('folder');
-    var dropdownContent = document.querySelector('.dropdown-content1');
+//     dropdownBtn.addEventListener('click', function() {
+//       if (dropdownContent.style.display === 'block') {
+//         dropdownContent.style.display = 'none';
+//       } else {
+//         dropdownContent.style.display = 'block';
+//       }
+//     });
+//   });
+//   //---------------------------------------------------Folder----------------------------------------
+//   document.addEventListener('DOMContentLoaded', function() {
+//     var dropdownBtn = document.getElementById('folder');
+//     var dropdownContent = document.querySelector('.dropdown-content1');
   
-    dropdownBtn.addEventListener('click', function() {
-      if (dropdownContent.style.display === 'block') {
-        dropdownContent.style.display = 'none';
-      } else {
-        dropdownContent.style.display = 'block';
-      }
-    });
-  });
+//     dropdownBtn.addEventListener('click', function() {
+//       if (dropdownContent.style.display === 'block') {
+//         dropdownContent.style.display = 'none';
+//       } else {
+//         dropdownContent.style.display = 'block';
+//       }
+//     });
+//   });
