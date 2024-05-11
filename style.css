@@ -912,3 +912,7 @@ width: 200px;
     background-color: #f1f1f1;
   }
    */
+   #closeCamera{
+position: absolute;
+top: 110px;
+   }

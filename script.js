@@ -218,6 +218,8 @@ document.querySelectorAll('.conversation-back').forEach(function(item) {
 const startCameraButton = document.getElementById('startCamera');
 const videoElement = document.getElementById('video');
 const downloadLink = document.getElementById('downloadLink');
+const closeCameraButton = document.getElementById('closeCamera'); // Close camera button
+const closeCameraIcon = document.querySelector('#closeCamera .ri-close-line'); // Close camera icon
 
 let stream;
 
@@ -230,6 +232,8 @@ async function startCamera() {
             videoElement.play();
             videoElement.style.display = 'block';
             downloadLink.style.display = 'none';
+            closeCameraButton.style.display = 'inline-block'; // Show close camera button
+            closeCameraIcon.style.display = 'inline'; // Show close camera icon
         } else {
             takePhoto();
         }
@@ -249,8 +253,23 @@ function takePhoto() {
     downloadLink.style.display = 'inline-block';
 }
 
+// Function to close the camera
+function closeCamera() {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop()); // Stop all tracks in the stream
+        stream = null;
+        videoElement.style.display = 'none';
+        downloadLink.style.display = 'none';
+        closeCameraButton.style.display = 'none'; // Hide close camera button
+    }
+}
+
 // Event listener for starting the camera
 startCameraButton.addEventListener('click', startCamera);
+
+// Event listener for closing the camera
+closeCameraButton.addEventListener('click', closeCamera);
+
 
 
 // --------------------------------------------------------------attachment-----------------------------------------------------------------------------
